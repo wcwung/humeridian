@@ -19,6 +19,7 @@
     "passport": "^0.2.1",
     "passport-fitbit": "^0.1.2",
     "passport-moves": "0.0.1",
+    "q": "^1.2.0",
     "request": "^2.53.0",
     "serve-favicon": "~2.2.0"
   },

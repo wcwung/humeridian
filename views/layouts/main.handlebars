@@ -28,17 +28,6 @@
     $(function() {
       app.init();
       console.log("Success!");
-      $('#steps').circleProgress({
-        value: 0.78,
-        size: 140,
-        thickness: 10,
-        fill: {
-          gradient: ["red", "orange"]
-        }
-      }).on('circle-animation-progress', function(event, progress) {
-    $(this).find('strong').html(parseInt(78 * progress) + '<i>%</i>');
-});
-
     });
   </script>
 </body>

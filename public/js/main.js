@@ -15,24 +15,38 @@ $(function() {
 				type: 'GET',
 				contentType: 'application/json',
 				success: function(data) {
+					console.log(data);
 					console.log("Fetched Fitbit Data");
 					$steps = $('#steps-count');
 					$distance = $('#distance');
 					$floors = $('#floors');
-					var steps = data.user["_json"].best.total.steps.value;
-					var distance =  data.user["_json"].best.total.distance.value; 
-					var floors = data.user["_json"].best.total.floors.value; 
-
-					var steps = steps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					var newSteps = data.user["_json"].summary.steps;
+					var distance =  data.user["_json"].summary.distances[5].distance; 
+					var floors = data.user["_json"].summary.floors; 
+					var goal = data.user["_json"].goals.steps;
+					var steps = newSteps.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					var stepGoal = Math.floor((newSteps/goal) * 100);
+					console.log(goal);
+					console.log(newSteps);
+					console.log(goal/newSteps);
+					console.log(stepGoal);
 
 					$('<h1>' + steps + ' steps' + '</h1>').appendTo($steps);
 
 					$('<h1>' + distance.toFixed(1) + ' miles' + '</h1>').appendTo($distance);
 
 					$('<h1>' + floors.toFixed(1) + ' floors' + '</h1>').appendTo($floors);
-					console.log(steps);
-					console.log(data.user["_json"]);
-					console.log(data);
+					
+					  $('#steps').circleProgress({
+					    value: '0.'+stepGoal,
+					    size: 140,
+					    thickness: 10,
+					    fill: {
+					      gradient: ["red", "orange"]
+					    }
+					  }).on('circle-animation-progress', function(event, progress) {
+					$(this).find('strong').html(parseInt(stepGoal * progress) + '<i>%</i>');
+					});	
 				},
 				error: function(data) {
 					console.error('Failed to get data');
@@ -47,7 +61,7 @@ $(function() {
 		height: "5'10",
 		bloodType: 'A-',
 		heartRate: 76,
-		bodyFat: '19.8%'
+		bodyFat: '15.8%'
 	}
 	// /app	
 	}
