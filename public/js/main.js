@@ -16,10 +16,11 @@ $(function() {
 				contentType: 'application/json',
 				success: function(data) {
 					console.log("Fetched Fitbit Data");
+					console.log(data);
 					$steps = $('#steps-count');
 					$distance = $('#distance');
 					$floors = $('#floors');
-					var steps = data.user["_json"].best.total.steps.value;
+					var newSteps = data.user["_json"].best.total.steps.value;
 					var distance =  data.user["_json"].best.total.distance.value; 
 					var floors = data.user["_json"].best.total.floors.value; 
 

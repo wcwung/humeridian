@@ -31,7 +31,8 @@ a {
   width: 100%;
   height: 100%;
   background: black;
-  background-image: url("http://dgt5r4zz5sach.cloudfront.net/~/media/images/heroes/careers/getpaidforgivingashit.jpg?as=1&t=635225527001803550"); }
+  background-image: url("http://dgt5r4zz5sach.cloudfront.net/~/media/images/heroes/careers/getpaidforgivingashit.jpg?as=1&t=635225527001803550");
+  background-size: 100% 100%; }
 
 .login-wrapper {
   padding: 50px; }
